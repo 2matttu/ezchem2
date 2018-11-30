@@ -3,7 +3,7 @@
 {% block main %}
 
 <h1>Eureka!</h1>
-<p>Don't forget to add structures and cite!</p>
+<p>Click on the table to copy it! Don't forget to add structures and cite!</p>
 <style>
     table {
     border-collapse: collapse;
@@ -76,6 +76,8 @@ td {
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
     }
+    document.execCommand("copy");
+    alert("Table has been copied!");
 }
 
 

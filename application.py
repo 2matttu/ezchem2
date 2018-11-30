@@ -42,7 +42,6 @@ def form():
     if request.method == "GET":
         return redirect('/')
     if request.method == "POST":
-        #TODO
         data = []
         sublist = []
         index = 0
