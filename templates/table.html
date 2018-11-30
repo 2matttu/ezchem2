@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h1>Eureka!</h1>
+<p>Don't forget to add structures and cite!</p>
+<style>
+    table {
+    border-collapse: collapse;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+td {
+    padding: 5px;
+    vertical-align: top;
+}
+</style>
+<div class="selectable">
+<table>
+    <tr id="bolded">
+        <td width="130">Chemical Name/<br>Structure/<br>Formula</td>
+        <td width="60">MW<br>g/mol</td>
+        <td width="110">MP/BP<br>&#8451;</td>
+        <td width="70">SG or density<br>g/mL</td>
+        <td width="100">Amt required/<br>produced</td>
+        <td width="150">Safety hazards/<br>precautions<br>Always PPE</td>
+    </tr>
+    {% for row in data %}
+    <tr class="normal">
+        <td>{{ row[0] }}<br><br><span class="sub">{{ row[1] }}</span></td>
+        <td>{{ row[2] }}</td>
+        <td>MP: {{ row[3] }}<br>BP: {{ row[4] }}</td>
+        <td class="celsius">{{ row[5] }}</td>
+        <td>{{ row[6] }}</td>
+        <td>{{ row[7] }}/ {{row[8]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+<br>
+<form action="/">
+    <button class="btn" type="submit"/>Start Over</button>
+</form>
+
+<script>
+    var a = document.getElementsByClassName("sub");
+    for (var i = 0; i < a.length; i++) {
+        var str = a[i].innerHTML;
+        for (var j = 0; j < 10; j++) {
+            str = str.replace(new RegExp(j.toString(), 'g'), "<sub>" + j.toString() + "</sub>");
+        }
+        a[i].innerHTML = str;
+    }
+    var b = document.getElementsByClassName("celsius");
+    for (var i = 0; i < b.length; i++) {
+        var str = b[i].innerHTML;
+        str = str.replace(/C/g, "&#8451;")
+        b[i].innerHTML = str;
+    }
+    document.getElementById("bolded").style.font = "bold 16px 'Times New Roman'";
+    var x = document.getElementsByClassName("normal");
+    for (var i = 0; i < x.length; i++) {
+    x[i].style.font = "16px 'Times New Roman'";
+}
+    $(document).ready(function () {
+    var selectcounter = 1;
+
+    $(".selectable").each(function() {
+        idja = "selectable" + selectcounter;
+        $(this).attr('id', idja);
+        $(this).attr('onclick', 'selectText("' + idja + '")');
+        selectcounter++;
+    });
+});
+
+function selectText(containerid) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select();
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().addRange(range);
+    }
+}
+
+</script>
+
+{% endblock %}

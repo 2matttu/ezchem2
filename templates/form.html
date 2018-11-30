@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <h1>E-Z Chem Tables</h1>
+
+    <h4>Just so you know:</h4>
+
+    <ul>
+        <li>Subscripts will automatically be applied to formulas. <b>H2O</b> will become <b>H<sub>2</sub>O</b></li>
+        <li>The degree symbol will automatically be applied to densities. 100 at <b>20C</b> will became 100 at <b>20&#8451;</b>.</li>
+        <li>Separate each hazard/precaution using a semicolon or comma. New lines register as spaces.</li>
+        <li>Units don't need to be added unless they are not specified, like for temperature in density or amt required/produced.</li>
+        <li>Chemical structures still have to be added afterwards!</li>
+    </ul>
+
+    <form action="/form" method="post">
+
+        <table class="table table-hover table-bordered">
+            <head>
+                <tr>
+                    <th>Name/Formula</th>
+                    <th>MW g/mol</th>
+                    <th>MP/BP &#8451;</th>
+                    <th>Density g/mL</th>
+                    <th>Amt Required/Produced</th>
+                    <th>Safety Hazards</th>
+                    <th>Precautions</th>
+                </tr>
+            </head>
+                {% for n in strings %}
+                <tr>
+                    <td>
+                        <input type="text" name={{"name" + n}} placeholder="Name" autofocus>
+                        <input type="text" name={{"formula" + n}} placeholder="Formula">
+                    </td>
+                    <td>
+                        <input type="text" name={{"mw" + n}} placeholder="MW">
+                    </td>
+                    <td>
+                        <input type="text" name={{"mp" + n}} placeholder="MP">
+                        <input type="text" name={{"bp" + n}} placeholder="BP">
+                    </td>
+                    <td>
+                        <input type="text" name={{"density" + n}} placeholder="Density">
+                    </td>
+                    <td>
+                        <input type="text" name={{"amt" + n}} placeholder="Include units">
+                    </td>
+                    <td>
+                        <textarea type="text" name={{"hazards" + n}} placeholder="separate with ; or ,"></textarea>
+                    </td>
+                    <td>
+                        <textarea type="text" name={{"precautions" + n}} placeholder="separate with ; or ,"></textarea>
+                    </td>
+                </tr>
+                {% endfor %}
+
+        </table>
+        <br>
+        <button class="btn" type="submit">Submit</button>
+
+    </form>
+    <br>
+    <form action="/">
+    <button class="btn" type="submit" />Go Back</button>
+    </form>
+
+{% endblock %}

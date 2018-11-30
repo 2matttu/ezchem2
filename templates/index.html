@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<style>
+    #center {
+    margin: auto;
+    width: 80%;
+}
+</style>
+<div id="center">
+<h1>E-Z Chem Tables</h1>
+
+<p>Effortlessly create perfectly formatted Chem Tables for Yale Organic Chemistry Labs.</p>
+<p>First, enter how many chemicals your table will include.</p>
+
+<form action="/" method="post">
+    <div class="form-inline">
+        <input autocomplete="off" min="1" class="form-control" name="n" placeholder="enter # of chemicals" type="number">
+    </div>
+    <br>
+    <button class="btn" type="submit">Next</button>
+</form>
+</div>
+
+{% endblock %}
+
