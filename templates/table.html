@@ -18,7 +18,7 @@ td {
     vertical-align: top;
 }
 </style>
-<div class="selectable">
+<div id="selectable" onclick="selectText('selectable')">
 <table>
     <tr id="bolded">
         <td width="130">Chemical Name/<br>Structure/<br>Formula</td>
@@ -65,28 +65,19 @@ td {
     for (var i = 0; i < x.length; i++) {
     x[i].style.font = "16px 'Times New Roman'";
 }
-    $(document).ready(function () {
-    var selectcounter = 1;
-
-    $(".selectable").each(function() {
-        idja = "selectable" + selectcounter;
-        $(this).attr('id', idja);
-        $(this).attr('onclick', 'selectText("' + idja + '")');
-        selectcounter++;
-    });
-});
-
-function selectText(containerid) {
-    if (document.selection) {
+    function selectText(containerid) {
+    if (document.selection) { // IE
         var range = document.body.createTextRange();
         range.moveToElementText(document.getElementById(containerid));
         range.select();
     } else if (window.getSelection) {
         var range = document.createRange();
         range.selectNode(document.getElementById(containerid));
+        window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
     }
 }
+
 
 </script>
 
