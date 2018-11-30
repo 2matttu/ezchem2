@@ -10,7 +10,7 @@
 <div id="center">
 <h1>E-Z Chem Tables</h1>
 
-<p>Effortlessly create perfectly formatted Chem Tables for Yale Organic Chemistry Labs.</p>
+<p>Create perfectly formatted Chem Tables for Yale Organic Chemistry Labs.</p>
 <p>First, enter how many chemicals your table will include.</p>
 
 <form action="/" method="post">
@@ -21,6 +21,22 @@
     <button class="btn" type="submit">Next</button>
 </form>
 </div>
+
+<script>
+    document.querySelector('form').onsubmit = function() {
+        var input = document.querySelector('input');
+        if (!input.value) {
+            alert('Please enter a number!');
+            return false;
+        }
+        if (input.value < 1 || input.value > 99) {
+            alert('Please enter a reasonable number!');
+            return false;
+        }
+        return true;
+    }
+    var inputs = document.querySelectorAll('input');
+</script>
 
 {% endblock %}
 

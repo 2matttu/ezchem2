@@ -4,12 +4,12 @@
 
     <h1>E-Z Chem Tables</h1>
 
-    <h4>Just so you know:</h4>
+    <h4>Things to know:</h4>
 
     <ul>
         <li>Subscripts will automatically be applied to formulas. <b>H2O</b> will become <b>H<sub>2</sub>O</b></li>
         <li>The degree symbol will automatically be applied to densities. 100 at <b>20C</b> will became 100 at <b>20&#8451;</b>.</li>
-        <li>Separate each hazard/precaution using a semicolon or comma. New lines register as spaces.</li>
+        <li>Separate each hazard/precaution using semicolons/commas/periods. New lines register as spaces.</li>
         <li>Units don't need to be added unless they are not specified, like for temperature in density or amt required/produced.</li>
         <li>Chemical structures still have to be added afterwards!</li>
     </ul>
@@ -65,5 +65,24 @@
     <form action="/">
     <button class="btn" type="submit" />Go Back</button>
     </form>
+    <script>
+        // https://www.w3schools.com/jsref/met_document_queryselectorall.asp
+        document.querySelector('form').onsubmit = function() {
+            var inputs = document.querySelectorAll('input');
+            var textboxes = document.querySelectorAll('textarea');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].value) {
+                    return confirm('Some text areas are blank. Proceed anyways?');
+
+                }
+            }
+            for (var j = 0; j < textboxes.length; j++) {
+                if (!textboxes[j].value) {
+                    return confirm('Some text areas are blank. Proceed anyways?');
+                }
+            }
+            return true;
+        }
+    </script>
 
 {% endblock %}
