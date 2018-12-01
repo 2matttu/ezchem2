@@ -50,6 +50,6 @@ def form():
                 sublist.append(request.form.get(PROPERTIES[j] + str(index)))
             data.append(sublist)
             sublist = []
-            if not request.form.get("name" + str(index+1)):
+            if request.form.get("name" + str(index+1)) == None:
                 return render_template("table.html", data = data)
             index = index + 1

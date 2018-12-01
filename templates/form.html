@@ -2,7 +2,7 @@
 
 {% block main %}
 
-    <h1>E-Z Chem Tables</h1>
+    <h1>Next step: fill out chemical properties</h1>
 
     <h4>Things to know:</h4>
 
@@ -57,15 +57,37 @@
                 {% endfor %}
 
         </table>
-        <br>
-        <button class="btn" type="submit">Submit</button>
-
+    <div class="btn" onClick="addRow()">Add Chemical</div>
+    <br>
+    <div class="btn" onClick="delRow()">Delete Chemical</div>
+    <br>
+    <br>
+    <button class="btn" type="submit">Submit</button>
     </form>
     <br>
-    <form action="/">
-    <button class="btn" type="submit" />Go Back</button>
-    </form>
     <script>
+        function addRow() {
+            var x = document.querySelectorAll("tr").length - 1;
+            var id = x.toString();
+            var td1 = '<td><input type="text" name="name' + id + '" placeholder="Name" autofocus><input type="text" name="formula' + id + '" placeholder="Formula"></td>';
+            var td2 = '<td><input type="text" name="mw' + id + '" placeholder="MW"></td>';
+            var td3 = '<td><input type="text" name="mp' + id + '" placeholder="MP" autofocus><input type="text" name="bp' + id + '" placeholder="BP"></td>';
+            var td4 = '<td><input type="text" name="density' + id + '" placeholder="Density"></td>';
+            var td5 = '<td><input type="text" name="amt' + id + '" placeholder="Include units"></td>';
+            var td6 = '<td><textarea type="text" name="hazards' + id + '" placeholder="separate with ; or ,"></textarea></td>';
+            var td7 = '<td><textarea type="text" name="precautions' + id + '" placeholder="separate with ; or ,"></textarea></td>';
+            $("table").append("<tr></tr>");
+            var y = document.querySelectorAll("tr");
+            $(y[y.length - 1]).append(td1, td2, td3, td4, td5, td6, td7);
+        }
+
+        function delRow() {
+            var trs = document.querySelectorAll("tr");
+            if (trs.length > 2) {
+                trs[trs.length - 1].remove();
+            }
+        }
+
         // https://www.w3schools.com/jsref/met_document_queryselectorall.asp
         document.querySelector('form').onsubmit = function() {
             var inputs = document.querySelectorAll('input');
