@@ -7,8 +7,9 @@ EZ Chem Tables is a web app allowing students taking Organic Chemistry Lab at Ya
 prelabs. I created it in hopes of speeding up the time it took for students to create these tables, since correctly formatting these tables
 takes up a considerable amount of time.
 
-The web app can be accessed at the following URL: ezchem.herokuapp.com. Also, the web app can be tested by entering "flask run" in the
-"ezchem" directory, assuming the environment has flask installed. The GitHub repository can be found at https://github.com/2matttu/ezchem2.
+The web app can be accessed at the following URL: https://ezchem.herokuapp.com. Also, the web app can be tested by entering "flask run" in 
+the "ezchem" directory, assuming the environment has flask installed. The GitHub repository can be found at 
+https://github.com/2matttu/ezchem2.
 
 The first step is to enter the number of chemicals in the table. This number must be positive and is capped at 99 to prevent the
 website from crashing due to too many form rows.
