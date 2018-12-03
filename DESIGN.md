@@ -30,7 +30,7 @@ to be dynamic and change based on how many chemicals the user wants.
 
 To transfer the information inputted into the form into the table, I ultimately decided that I would input the data into a list of lists
 in application.py, with lists in the parent list corresponding to different chemicals/rows, and the elements in those child lists corresponding
-to the properties of those chemicals. I used a for loop inside a forever loop for this, and a conditional checking if name<x> existed at the
+to the properties of those chemicals. I used a for loop inside a forever loop for this, and a conditional checking if name"x" existed at the
 end of each inside loop. For instance, if application.py sees that request.form.get(name9) is "None", that means there is no 10th row/chemical,
 meaning that all the information has been saved in the list and application.py can safety render table.html and pass on that list. Again,
 looking at the source code will give a better sense of how it works.
@@ -42,11 +42,12 @@ tags between each number. Additionally, for densities, a function converts regul
 symbol.
 
 After the basic functionality above was implemented, I then implemented minor features that improved the user experience. In form.html,
-I added the ability to add or remove rows, in case a user under/overestimated the number of chemicals in their Chem Table. For removing a row,
-I used Javascript to remove the last instance of the <tr> tag, and for adding a row, I had Javascript figure out the "id" of the new row
-based on the number of <tr> tags, and then add a row with all form entries having that id number at the end of their name. Additionally, I
-added a feature where clicking on any part of the table would automatically select and copy the table, in case some tables (very long ones)
-are time-consuming to select and copy all at once.
+I added the ability to add or remove rows, in case a user under/overestimated the number of chemicals in their Chem Table. For removing
+a row,
+I used Javascript to remove the last instance of the tr tag, and for adding a row, I had Javascript figure out the "id" of the new row
+based on the number of tr tags, and then add a row with all form entries having that id number at the end of their name. Additionally, I
+added a feature where clicking on any part of the table would automatically select and copy the table, in case some tables (very long 
+ones) are time-consuming to select and copy all at once.
 
 Finally, I decided to use Heroku to ultimately deploy my flask app to the web mainly due to how it worked nicely with GitHub and because
 CS50's Hackathon had a seminar on Heroku.
