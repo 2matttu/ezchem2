@@ -5,6 +5,7 @@
 <h1>Eureka!</h1>
 <p>Click on the table to copy it! Don't forget to add structures and cite!</p>
 <style>
+/*table formatting*/
     table {
     border-collapse: collapse;
 }
@@ -18,6 +19,7 @@ td {
     vertical-align: top;
 }
 </style>
+<!--when table is clicked, executes selectText function, selecting and copying the entire table into the user's clipboard-->
 <div id="selectable" onclick="selectText('selectable')">
 <table>
     <tr id="bolded">
@@ -28,6 +30,7 @@ td {
         <td width="100">Amt required/<br>produced</td>
         <td width="150">Safety hazards/<br>precautions<br>Always PPE</td>
     </tr>
+    <!--creates one row for each chemical-->
     {% for row in data %}
     <tr class="normal">
         <td>{{ row[0] }}<br><br><span class="sub">{{ row[1] }}</span></td>
@@ -53,6 +56,7 @@ td {
 </div>
 
 <script>
+    // converts regular numbers in chemical formula columns into subscript
     var a = document.getElementsByClassName("sub");
     for (var i = 0; i < a.length; i++) {
         var str = a[i].innerHTML;
@@ -61,18 +65,21 @@ td {
         }
         a[i].innerHTML = str;
     }
+    // converts C's in density column (ie 1.0 at 20C) into the degrees celcius symbol
     var b = document.getElementsByClassName("celsius");
     for (var i = 0; i < b.length; i++) {
         var str = b[i].innerHTML;
         str = str.replace(/C/g, "&#8451;")
         b[i].innerHTML = str;
     }
+    //converts text into Times New Roman 12 font. On most computers 16px converted into 12 size font in MS Word.
     document.getElementById("bolded").style.font = "bold 16px 'Times New Roman'";
     var x = document.getElementsByClassName("normal");
     for (var i = 0; i < x.length; i++) {
     x[i].style.font = "16px 'Times New Roman'";
 }
-
+    //selexts all text in a div element, aka my table
+    //https://stackoverflow.com/questions/1173194/select-all-div-text-with-single-mouse-click
     function selectText(containerid) {
     if (document.selection) { // IE
         var range = document.body.createTextRange();
@@ -84,10 +91,11 @@ td {
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
     }
+    //then copies the selected table
     document.execCommand("copy");
     alert("Table has been copied!");
 }
-
+    //back button
     function back() {
         window.history.back();
     }

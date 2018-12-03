@@ -35,6 +35,8 @@
                     <th>Precautions</th>
                 </tr>
             </head>
+                <!--n corresponds to the chemical (row) number. IE "mw2" is the molecular weight of the 3rd chemical-->
+                <!--strings is a list of integers cast as strings from 0 to x-1, x being the number of chemicals the user inputed-->
                 {% for n in strings %}
                 <tr>
                     <td>
@@ -69,9 +71,10 @@
     </form>
     <br>
     <script>
+        // adds row following the naming mechanism on the form
         function addRow() {
             var x = document.querySelectorAll("tr").length - 1;
-            var id = x.toString();
+            var id = x.toString(); // figures out what "id" the added chemical will be to follow form convention
             var td1 = '<td><input type="text" name="name' + id + '" placeholder="Name" autofocus><input type="text" name="formula' + id + '" placeholder="Formula"></td>';
             var td2 = '<td><input type="text" name="mw' + id + '" placeholder="MW"></td>';
             var td3 = '<td><input type="text" name="mp' + id + '" placeholder="MP" autofocus><input type="text" name="bp' + id + '" placeholder="BP"></td>';
@@ -84,6 +87,7 @@
             $(y[y.length - 1]).append(td1, td2, td3, td4, td5, td6, td7);
         }
 
+        // deletes last row
         function delRow() {
             var trs = document.querySelectorAll("tr");
             if (trs.length > 2) {
@@ -92,6 +96,7 @@
         }
 
         // https://www.w3schools.com/jsref/met_document_queryselectorall.asp
+        // if some fields are blank, confirms if user still wants to proceed.
         document.querySelector('form').onsubmit = function() {
             var inputs = document.querySelectorAll('input');
             var textboxes = document.querySelectorAll('textarea');
