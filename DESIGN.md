@@ -37,7 +37,7 @@ looking at the source code will give a better sense of how it works.
 
 In table.html, Jinja is used one last time to take in that list of lists and "convert" it into a table. As discussed earlier, the Javascript
 and CSS correctly formats the table, making it show up correctly in MS Word when a user copies and pastes it. There are also Javascript
-functions which helps with special symbols; for the chemical formulas, a function converts numbers into subscripts by adding <sub></sub> 
+functions which helps with special symbols; for the chemical formulas, a function converts numbers into subscripts by adding sub 
 tags between each number. Additionally, for densities, a function converts regular C's (ie 1.00 g/mL at 20C) into the degrees celcius 
 symbol.
 
