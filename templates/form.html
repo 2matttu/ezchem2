@@ -14,7 +14,14 @@
         <li>Chemical structures still have to be added afterwards!</li>
     </ul>
 
-    <form action="/form" method="post">
+    <div class="form-group row">
+    <button class="btn" onClick="addRow()">Add Row</button>
+    </div>
+    <div class="form-group row">
+    <button class="btn" onClick="delRow()">Delete Row</button>
+    </div>
+
+    <form class="form-group row" action="/form" method="post">
 
         <table class="table table-hover table-bordered">
             <head>
@@ -57,10 +64,6 @@
                 {% endfor %}
 
         </table>
-    <div class="btn" onClick="addRow()">Add Chemical</div>
-    <br>
-    <div class="btn" onClick="delRow()">Delete Chemical</div>
-    <br>
     <br>
     <button class="btn" type="submit">Submit</button>
     </form>
